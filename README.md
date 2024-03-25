@@ -31,7 +31,7 @@ git clone https://github.com/seu_usuario/nome_do_repositorio.git
 
 ## Autor
 
-Este projeto foi desenvolvido por [João Vinicius]([https://github.com/seu_usuario](https://github.com/joao-vinicius-silva).
+Este projeto foi desenvolvido por [João Vinicius](https://github.com/joao-vinicius-silva).
 
 ## Licença
 
