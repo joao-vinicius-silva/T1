@@ -28,54 +28,70 @@ document.addEventListener('DOMContentLoaded', function() {
         renderItems();
     }
     
+    //função de renderizar itens
     function renderItems() {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         todoList.innerHTML = '';
         items.forEach((item, index) => {
 
+            //criando a div de ações
             const action = document.createElement('div');
             action.className = "actions";
 
+            //criando os elementos da lista
             const li = document.createElement('li');
             li.textContent = item.name;
+
+            //criando elemento de editar
             const editButton = document.createElement('button');
             editButton.className = "editButton";
             editButton.textContent = 'Editar';
             editButton.onclick = () => setEditTask(index, item.name);
             
+            //criando elemento de remover
             const removeButton = document.createElement('button');
             removeButton.textContent = 'Remover';
             removeButton.className = "removeButton";
             removeButton.addEventListener('click', () => removeItem(index));
+
+            //adicionando botoes a div de ações
             action.appendChild(editButton);
             action.appendChild(removeButton);
 
+            //adicioando a div de ações no elemento
             li.append(action);
             todoList.appendChild(li);
         });
     }
 
+    //preenchendo o input com o valor do item que vai ser editado
     function setEditTask(index, value) {
         const taskInput = document.getElementById('todo-input');
         taskInput.value = value;
         selectedIndex = index;
     }
 
-
+    //atualizando valor do item
     function updateItem() {
         const taskInput = document.getElementById('todo-input');
         const newTask = taskInput.value;
         const items = JSON.parse(localStorage.getItem('items')) || [];
-        
-        if (newTask && selectedIndex !== null) {
-            items[selectedIndex].name = newTask;
-            localStorage.setItem('items', JSON.stringify(items));
-            selectedIndex = null;
-            taskInput.value = '';
-            renderItems();
+        debugger
+        if(selectedIndex === null){
+            alert('Por favor, selecione um item para editar');
+        }else{
+            if (newTask && selectedIndex !== null) {
+                items[selectedIndex].name = newTask;
+                localStorage.setItem('items', JSON.stringify(items));
+                selectedIndex = null;
+                taskInput.value = '';
+                renderItems();
+            }
         }
     }
     
+
+    //chamada do evento de adicionar
     addButton.addEventListener('click', function(event) {
         event.preventDefault();
         const itemNameInput = document.getElementById('todo-input');
@@ -88,6 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+
+    //chamada do evento de editar
     editButton.addEventListener('click', function(event) {
         event.preventDefault();
         const itemNameInput = document.getElementById('todo-input');
