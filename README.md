@@ -17,7 +17,7 @@ Este projeto consiste em uma aplicação web de lista de tarefas (todo list) des
 1. Clone o repositório para sua máquina local:
 
 ```
-git clone github.com/joao-vinicius-silva/T1](https://github.com/joao-vinicius-silva/T1.git)
+git clone https://github.com/joao-vinicius-silva/T1.git
 
 ```
 
