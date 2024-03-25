@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('todo-form');
 
     const editButton = document.getElementById('updateItem');
     const addButton = document.getElementById('addItem');
     const todoList = document.getElementById('todo-list');
     let selectedIndex = null;
 
-
+    //função de adicionar itens
     function addItem(name) {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         items.push({ name });
@@ -14,13 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
         renderItems();
     }
     
+    //função de remover itens
     function removeItem(index) {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         items.splice(index, 1);
         localStorage.setItem('items', JSON.stringify(items));
         renderItems();
     }
-    
+
+    //função de editar itens
     function editItem(index, newName) {
         const items = JSON.parse(localStorage.getItem('items')) || [];
         items[index].name = newName;
